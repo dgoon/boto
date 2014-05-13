@@ -91,7 +91,7 @@ class OpsWorksConnection(AWSQueryConnection):
 
 
     def __init__(self, **kwargs):
-        region = kwargs.get('region')
+        region = kwargs.pop('region') if 'region' in kwargs else None
         if not region:
             region = RegionInfo(self, self.DefaultRegionName,
                                 self.DefaultRegionEndpoint)
